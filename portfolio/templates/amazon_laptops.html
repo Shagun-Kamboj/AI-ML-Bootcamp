@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Amazon Laptop Scraper</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/amazon_laptops.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>💻 Amazon Laptop Collection</h1>
+
+<p>Static Web Scraping using Python + BeautifulSoup</p>
+
+</header>
+
+
+<div class="container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>S.No</th>
+
+<th>Laptop Name</th>
+
+<th>Price</th>
+
+<th>Rating</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for laptop in laptops %}
+
+<tr>
+
+<td>{{ loop.index }}</td>
+
+<td>{{ laptop.Title }}</td>
+
+<td>₹{{ laptop.Price }}</td>
+
+<td>{{ laptop.Rating }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>
