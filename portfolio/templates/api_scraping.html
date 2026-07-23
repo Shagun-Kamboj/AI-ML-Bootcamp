@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>API Scraping</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/api_scraping.css') }}">
+</head>
+
+<body>
+
+<h1 class="title">🌐 API Scraping Projects</h1>
+
+<div class="cards">
+
+    <!-- Meal DB -->
+    <div class="card">
+        <h2>🍽️ The Meal DB</h2>
+        <p>Fetch delicious meal recipes using TheMealDB API.</p>
+
+        <div class="buttons">
+            <a href="/mealdb" class="btn">View Details</a>
+            <a href="https://github.com/Shagun-Kamboj/AI-ML-Bootcamp/blob/main/Web_Scraping/web_scraping(9)(TheMealDB).ipynb"
+        target="_blank"
+        class="btn">
+         View Notebook
+        </a>
+            <a href="https://www.themealdb.com/" target="_blank" class="btn website">View Website</a>
+        </div>
+    </div>
+
+    
+
+
+    <div class="card">
+    <h2>🐱 Cat API</h2>
+
+    <p>Display random cat images using The Cat API.</p>
+
+    <div class="buttons">
+
+        <a href="{{ url_for('catapi') }}" class="btn">View Details</a>
+        <a href="https://github.com/Shagun-Kamboj/AI-ML-Bootcamp/blob/main/Web_Scraping/web_scraping(6)(catAPI).ipynb"
+        target="_blank"
+        class="btn">
+         View Notebook
+        </a>
+        <a href="https://thecatapi.com/" target="_blank" class="btn website">
+            View Website
+        </a>
+
+    </div>
+</div>
+
+   
+    <div class="card">
+        <h2>🦆 Random Duck</h2>
+        <p>Generate random duck images using Random Duck API.</p>
+
+        <div class="buttons">
+            <a href="{{ url_for('random_duck') }}" class="btn">View Details</a>
+            <a href="https://github.com/Shagun-Kamboj/AI-ML-Bootcamp/blob/main/Web_Scraping/web_scraping(7)(Random_duck).ipynb"
+            target="_blank"
+            class="btn">
+             View Notebook 
+            </a>
+            <a href="https://random-d.uk/api" target="_blank" class="btn website">View Website</a>
+        </div>
+    </div>
+
+    
+    <div class="card">
+        <h2>🛍️ Fake Store API</h2>
+        <p>Display products, prices and categories using Fake Store API.</p>
+
+        <div class="buttons">
+            <a href="{{ url_for('fakestore') }}" class="btn">View Details</a>
+            <a href="https://github.com/Shagun-Kamboj/AI-ML-Bootcamp/blob/main/Web_Scraping/web_scraping(8)(FakeAPI).ipynb"
+            target="_blank"
+         class="btn">
+        View Notebook
+        </a>
+            <a href="https://fakestoreapi.com/" target="_blank" class="btn website">View Website</a>
+        </div>
+    </div>
+
+    <!-- JSON Placeholder -->
+    <div class="card">
+        <h2>📄 JSON Placeholder</h2>
+        <p>Fetch posts, users, comments and albums using JSONPlaceholder.</p>
+
+        <div class="buttons">
+            <a href="{{ url_for('jsonplaceholder') }}" class="btn">View Details</a>
+            <a href="https://github.com/Shagun-Kamboj/AI-ML-Bootcamp/blob/main/Web_Scraping/web_scraping(10)(JSONPlaceholder).ipynb"
+         target="_blank"
+        class="btn">
+         View Notebook
+        </a>
+            <a href="https://jsonplaceholder.typicode.com/" target="_blank" class="btn website">View Website</a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
