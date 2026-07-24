@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CollegeDunia Data</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/collegedunia.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎓 CollegeDunia College List</h1>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>College Name</th>
+                <th>Ranking</th>
+                 <!--<th>Fees</th>-->
+            </tr>
+        </thead>
+
+        <tbody>
+
+        {% for college in colleges %}
+        <tr>
+            <td>{{ loop.index }}</td>
+             <td>{{ college.College_Name }}</td> 
+            <td>{{ college.Ranking }}</td>
+            <!--<td>{{ college.Fees }}</td>-->
+        </tr>
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>
