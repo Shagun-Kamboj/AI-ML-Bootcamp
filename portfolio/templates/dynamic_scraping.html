@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Web Scraping</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dynamic_scraping.css') }}">
+</head>
+
+<body>
+
+<h1 class="title">🚀 Dynamic Web Scraping</h1>
+
+<div class="cards">
+
+    <!-- Yahoo Finance -->
+    <div class="card">
+        <h2>📈 Yahoo Finance</h2>
+        <p>Scrape stock prices, company details and financial market information.</p>
+
+       <a href="/dynamic_scraping/yahoo_finance" class="btn">View Details</a>
+        <a href="https://finance.yahoo.com/" target="_blank" class="btn">Visit Website</a>
+    </div>
+
+    <!-- Quotes To Scrape -->
+    <div class="card">
+        <h2>💬 Quotes To Scrape</h2>
+        <p>Scrape quotes, authors and tags using Selenium.</p>
+
+        <a href="dynamic_scraping/quotes_to_scrape" class="btn">View Details</a>
+        <a href="https://quotes.toscrape.com/" target="_blank" class="btn">Visit Website</a>
+    </div>
+
+    <!-- IMDb -->
+    <div class="card">
+        <h2>🎬 IMDb Engine</h2>
+        <p>Scrape IMDb movies, ratings, year and genres.</p>
+
+        <a href="/imdb_scraper" class="btn">View Details</a>
+        <a href="https://www.imdb.com/" target="_blank" class="btn">Visit Website</a>
+    </div>
+
+    <div class="card">
+
+<div class="card">
+
+<h2>👟 Nike Store</h2>
+
+<p>Scrape Nike products using Selenium.</p>
+
+<a href="{{ url_for('nike_store') }}" class="btn">
+View Details
+</a>
+
+<a href="https://www.nike.com/in/" target="_blank" class="btn">
+Visit Website
+</a>
+
+</div>
+</div>
+
+    <!-- Indeed -->
+    <div class="card">
+        <h2>💼 Indeed Parser</h2>
+        <p>Scrape job titles, companies, salaries and locations.</p>
+
+        <a href="/dynamic_scraping/indeed_parser" class="btn">View Details</a>
+        <a href="https://in.indeed.com/" target="_blank" class="btn">Visit Website</a>
+    </div>
+
+</div>
+
+<div class="back-btn">
+    <a href="/webscraping" class="btn">⬅ Back</a>
+</div>
+
+</body>
+</html>
