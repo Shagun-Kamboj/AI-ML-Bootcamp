@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<title>Indeed Parser</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/indeed_parser.css') }}">
+
+</head>
+
+<body>
+
+<h1 class="title">
+💼 Indeed Job Parser
+</h1>
+
+<div class="container">
+
+{% for job in jobs %}
+
+<div class="card">
+
+<h2>{{ job.title }}</h2>
+
+<p>
+<b>Company:</b>
+{{ job.company }}
+</p>
+
+<p>
+<b>Location:</b>
+{{ job.location }}
+</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+
+</html>
