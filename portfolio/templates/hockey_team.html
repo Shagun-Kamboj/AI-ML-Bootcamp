@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hockey Teams</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/hockey_team.css') }}">
+</head>
+
+<body>
+
+<h1 class="title">🏒 NHL Hockey Teams</h1>
+
+<div class="container">
+
+{% for team in teams %}
+
+<div class="card">
+
+<img src="{{ team.badge }}" alt="{{ team.name }}">
+
+<h2>{{ team.name }}</h2>
+
+<p><strong>Country:</strong> {{ team.country }}</p>
+
+<p><strong>Founded:</strong> {{ team.formed }}</p>
+
+<p><strong>Stadium:</strong> {{ team.stadium }}</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<div class="back">
+
+<a href="/static_scraping">⬅ Back</a>
+
+</div>
+
+</body>
+
+</html>
