@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Task Recommendation</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/ai_plan.css') }}">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+
+        <div>
+            <h1>🤖 AI Recommendation</h1>
+            <p>Your personalized productivity roadmap powered by Gemini AI.</p>
+        </div>
+
+        <a href="{{ url_for('view_tasks') }}" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back
+        </a>
+
+    </div>
+
+    <div class="grid">
+
+        <!-- Left Card -->
+
+        <div class="card">
+
+            <h2>
+                <i class="fa-solid fa-clipboard-list"></i>
+                Task Details
+            </h2>
+
+            <div class="info">
+                <div class="label">Title</div>
+                <div class="value">{{ task.title }}</div>
+            </div>
+
+            <div class="info">
+                <div class="label">Priority</div>
+                <div class="value">
+                    <span class="priority">
+                        {{ task.priority }}
+                    </span>
+                </div>
+            </div>
+
+            <div class="info">
+                <div class="label">Deadline</div>
+                <div class="value">{{ task.deadline }}</div>
+            </div>
+
+            <div class="info">
+                <div class="label">Status</div>
+                <div class="value">{{ task.status }}</div>
+            </div>
+
+            <a href="{{ url_for('ai_chat', id=task.id) }}" class="chat-btn">
+                <i class="fa-solid fa-comments"></i>
+                Ask AI
+                <a href="{{ url_for('ai_schedule', id=task.id) }}" class="schedule-btn">
+    📅 AI Schedule
+</a>
+            </a>
+
+        </div>
+
+        <!-- Right Card -->
+
+        <div class="card">
+
+            <h2>
+                🤖 Gemini AI Plan
+            </h2>
+
+            <div class="ai">
+
+                {{ task.ai_plan }}
+
+            </div>
+
+            <div class="footer">
+
+                <div class="box">
+                    <h3>⭐ Difficulty</h3>
+                    <p>Medium</p>
+                </div>
+
+                <div class="box">
+                    <h3>⏰ Estimated Time</h3>
+                    <p>20 Hours</p>
+                </div>
+
+                <div class="box">
+                    <h3>🎯 Success Rate</h3>
+                    <p>92%</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

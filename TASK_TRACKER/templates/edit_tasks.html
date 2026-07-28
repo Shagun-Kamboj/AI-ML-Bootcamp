@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_task.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>✏️ Edit Task</h1>
+
+        <form method="POST">
+
+            <!-- Task Title -->
+            <div class="form-group">
+                <label>Task Title</label>
+                <input
+                    type="text"
+                    name="title"
+                    value="{{ task.title }}"
+                    required
+                >
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+                <label>Description</label>
+
+                <textarea
+                    name="description"
+                    rows="5"
+                    required>{{ task.description }}</textarea>
+            </div>
+
+            <!-- Priority -->
+            <div class="form-group">
+                <label>Priority</label>
+
+                <select name="priority">
+
+                    <option value="High"
+                    {% if task.priority=="High" %}selected{% endif %}>
+                    High
+                    </option>
+
+                    <option value="Medium"
+                    {% if task.priority=="Medium" %}selected{% endif %}>
+                    Medium
+                    </option>
+
+                    <option value="Low"
+                    {% if task.priority=="Low" %}selected{% endif %}>
+                    Low
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Status -->
+            <div class="form-group">
+
+                <label>Status</label>
+
+                <select name="status">
+
+                    <option value="Pending"
+                    {% if task.status=="Pending" %}selected{% endif %}>
+                    Pending
+                    </option>
+
+                    <option value="Completed"
+                    {% if task.status=="Completed" %}selected{% endif %}>
+                    Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- Deadline -->
+            <div class="form-group">
+
+                <label>Deadline</label>
+
+                <input
+                    type="date"
+                    name="deadline"
+                    value="{{ task.deadline }}"
+                    required
+                >
+
+            </div>
+
+            <!-- Buttons -->
+            <div class="buttons">
+
+                <button type="submit" class="save-btn">
+                    💾 Save Changes
+                </button>
+
+                <a href="{{ url_for('view_tasks') }}" class="cancel-btn">
+                    ← Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

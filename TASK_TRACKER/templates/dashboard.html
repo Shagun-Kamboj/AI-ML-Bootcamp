@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Task Manager Dashboard</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ================= Sidebar ================= -->
+
+<aside class="sidebar">
+
+<div class="logo">
+
+🤖 AI Task Manager
+
+</div>
+
+<ul>
+
+<li class="active">
+
+<a href="{{ url_for('dashboard') }}">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('add_task') }}">
+
+<i class="fa-solid fa-plus"></i>
+
+Add Task
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('view_tasks') }}">
+
+<i class="fa-solid fa-list-check"></i>
+
+My Tasks
+
+</a>
+
+</li>
+
+<li>
+
+<a href="#analytics">
+
+<i class="fa-solid fa-chart-simple"></i>
+
+Analytics
+
+</a>
+
+</li>
+
+<li>
+
+<a href="#ai">
+
+<i class="fa-solid fa-robot"></i>
+
+AI Insights
+
+</a>
+
+</li>
+
+<li>
+
+<a href="{{ url_for('logout') }}">
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout
+
+</a>
+
+</li>
+
+</ul>
+
+</aside>
+
+<!-- ================= Main ================= -->
+
+<main class="main-content">
+
+<!-- ================= Header ================= -->
+
+<header class="topbar">
+
+<div>
+
+<h1 id="greeting">
+
+👋 Welcome,
+
+{{ name }}
+
+</h1>
+
+<p>
+
+Manage your work smarter with Gemini AI.
+
+</p>
+
+</div>
+
+<div class="top-right">
+
+<div id="clock" class="clock">
+
+00:00:00
+
+</div>
+
+<div class="user">
+
+<i class="fa-solid fa-user"></i>
+
+{{ name }}
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ================= Action Buttons ================= -->
+
+<div class="action-bar">
+
+<a href="{{ url_for('add_task') }}" class="btn">
+
+<i class="fa-solid fa-plus"></i>
+
+New Task
+
+</a>
+
+<a href="{{ url_for('view_tasks') }}" class="btn secondary">
+
+<i class="fa-solid fa-list-check"></i>
+
+View Tasks
+
+</a>
+
+</div>
+
+<!-- ================= Statistics ================= -->
+
+<div class="cards">
+
+<div class="card blue">
+
+<i class="fa-solid fa-list-check"></i>
+
+<h3>Total Tasks</h3>
+
+<h1>{{ total_tasks }}</h1>
+
+<p>Overall Tasks</p>
+
+</div>
+
+<div class="card green">
+
+<i class="fa-solid fa-circle-check"></i>
+
+<h3>Completed</h3>
+
+<h1>{{ completed }}</h1>
+
+<p>Completed Successfully</p>
+
+</div>
+
+<div class="card orange">
+
+<i class="fa-solid fa-hourglass-half"></i>
+
+<h3>Pending</h3>
+
+<h1>{{ pending }}</h1>
+
+<p>Need Attention</p>
+
+</div>
+
+<div class="card red">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+
+<h3>Overdue</h3>
+
+<h1>{{ overdue }}</h1>
+
+<p>Resolve Quickly</p>
+
+</div>
+
+</div>
+<!-- ================= Dashboard Grid ================= -->
+
+<div class="dashboard-grid">
+
+    <!-- AI Insights -->
+
+    <div class="ai-card" id="ai">
+
+        <div class="section-header">
+
+            <h2>
+
+                🤖 AI Productivity Insights
+
+            </h2>
+
+        </div>
+
+        <div class="ai-content">
+
+    {% if ai_insights %}
+
+        <pre>{{ ai_insights }}</pre>
+
+    {% else %}
+
+                <p>
+
+                    Welcome! Add some tasks to receive AI-powered productivity insights.
+
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- Quick Actions -->
+
+    <div class="quick-card">
+
+        <div class="section-header">
+
+            <h2>
+
+                ⚡ Quick Actions
+
+            </h2>
+
+        </div>
+
+        <div class="quick-buttons">
+
+            <a href="{{ url_for('add_task') }}" class="quick-btn blue">
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Task
+
+            </a>
+
+            <a href="{{ url_for('view_tasks') }}" class="quick-btn green">
+
+                <i class="fa-solid fa-list-check"></i>
+
+                View Tasks
+
+            </a>
+
+        </div>
+
+
+        <!-- Productivity -->
+
+        <div class="progress-section">
+
+            <h3>
+
+                📈 Productivity
+
+            </h3>
+
+            {% if total_tasks > 0 %}
+
+            {% set progress=((completed/total_tasks)*100)|round(0)|int %}
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"
+
+                     style="width:{{ progress }}%;">
+
+                </div>
+
+            </div>
+
+            <p class="progress-text">
+
+                {{ progress }}% Completed
+
+            </p>
+
+            {% else %}
+
+            <div class="progress-bar">
+
+                <div class="progress-fill"
+
+                     style="width:0%;">
+
+                </div>
+
+            </div>
+
+            <p class="progress-text">
+
+                No tasks available.
+
+            </p>
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Quick Stats -->
+
+        <div class="mini-stats">
+
+            <div class="mini-card">
+
+                <h4>
+
+                    {{ completed }}
+
+                </h4>
+
+                <p>
+
+                    Completed
+
+                </p>
+
+            </div>
+
+            <div class="mini-card">
+
+                <h4>
+
+                    {{ pending }}
+
+                </h4>
+
+                <p>
+
+                    Pending
+
+                </p>
+
+            </div>
+
+            <div class="mini-card">
+
+                <h4>
+
+                    {{ overdue }}
+
+                </h4>
+
+                <p>
+
+                    Overdue
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= Charts ================= -->
+
+<div class="charts" id="analytics">
+
+    <div class="chart-card">
+
+        <h2>
+
+            📊 Task Status
+
+        </h2>
+
+        <canvas id="statusChart"></canvas>
+
+    </div>
+
+    <div class="chart-card">
+
+        <h2>
+
+            🔥 Priority Distribution
+
+        </h2>
+
+        <canvas id="priorityChart"></canvas>
+
+    </div>
+
+</div>
+<!-- ================= Recent Tasks ================= -->
+
+<div class="table-card">
+
+    <div class="table-header">
+
+        <h2>
+
+            <i class="fa-solid fa-list-check"></i>
+
+            Recent Tasks
+
+        </h2>
+
+        <a href="{{ url_for('view_tasks') }}" class="view-btn">
+
+            View All
+
+        </a>
+
+    </div>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Title</th>
+
+                <th>Priority</th>
+
+                <th>Status</th>
+
+                <th>Deadline</th>
+
+                <th>AI Plan</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% if tasks %}
+
+        {% for task in tasks[:5] %}
+
+        <tr>
+
+            <td>
+
+                {{ task.title }}
+
+            </td>
+
+            <td>
+
+                {% if task.priority=="High" %}
+
+                    <span class="priority high">
+
+                        🔴 High
+
+                    </span>
+
+                {% elif task.priority=="Medium" %}
+
+                    <span class="priority medium">
+
+                        🟠 Medium
+
+                    </span>
+
+                {% else %}
+
+                    <span class="priority low">
+
+                        🟢 Low
+
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+            <td>
+
+                {% if task.status=="Completed" %}
+
+                    <span class="status completed">
+
+                        ✔️ Completed
+
+                    </span>
+
+                {% else %}
+
+                    <span class="status pending">
+
+                        ⏳ Pending
+
+                    </span>
+
+                {% endif %}
+
+            </td>
+
+            <td>
+
+                {{ task.deadline }}
+
+            </td>
+
+            <td>
+
+                <a href="{{ url_for('ai_plan', id=task.id) }}" class="ai-btn">
+
+                    🤖 Open
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+        {% else %}
+
+        <tr>
+
+            <td colspan="5" style="text-align:center;padding:30px;">
+
+                🚀 No tasks available.
+
+            </td>
+
+        </tr>
+
+        {% endif %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<!-- ================= Bottom Section ================= -->
+
+<div class="bottom-grid">
+
+    <div class="motivation-card">
+
+        <h2>
+
+            🏆 Quote of the Day
+
+        </h2>
+
+        <p>
+
+            "Success is the sum of small efforts repeated day after day."
+
+        </p>
+
+    </div>
+
+    <div class="summary-card">
+
+        <h2>
+
+            📌 Today's Summary
+
+        </h2>
+
+        <ul>
+
+            <li>
+
+                ✅ Completed Tasks :
+                <strong>{{ completed }}</strong>
+
+            </li>
+
+            <li>
+
+                ⏳ Pending Tasks :
+                <strong>{{ pending }}</strong>
+
+            </li>
+
+            <li>
+
+                🚨 Overdue Tasks :
+                <strong>{{ overdue }}</strong>
+
+            </li>
+
+            <li>
+
+                📋 Total Tasks :
+                <strong>{{ total_tasks }}</strong>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+<!-- ================= Scripts ================= -->
+
+<script>
+
+const statusChart = document.getElementById("statusChart");
+
+if(statusChart){
+
+new Chart(statusChart,{
+
+type:"doughnut",
+
+data:{
+
+labels:["Completed","Pending","Overdue"],
+
+datasets:[{
+
+data:[
+{{ completed }},
+{{ pending }},
+{{ overdue }}
+],
+
+backgroundColor:[
+"#22c55e",
+"#f59e0b",
+"#ef4444"
+],
+
+borderWidth:0
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+position:"bottom",
+
+labels:{
+
+color:"#ffffff"
+
+}
+
+}
+
+}
+
+}
+
+});
+
+}
+
+
+
+// Priority Counts
+
+const highCount={{ tasks|selectattr("priority","equalto","High")|list|length }};
+
+const mediumCount={{ tasks|selectattr("priority","equalto","Medium")|list|length }};
+
+const lowCount={{ tasks|selectattr("priority","equalto","Low")|list|length }};
+
+
+
+const priorityChart=document.getElementById("priorityChart");
+
+if(priorityChart){
+
+new Chart(priorityChart,{
+
+type:"bar",
+
+data:{
+
+labels:["High","Medium","Low"],
+
+datasets:[{
+
+label:"Tasks",
+
+data:[highCount,mediumCount,lowCount],
+
+backgroundColor:[
+
+"#ef4444",
+
+"#f59e0b",
+
+"#22c55e"
+
+],
+
+borderRadius:10
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+display:false
+
+}
+
+},
+
+scales:{
+
+y:{
+
+beginAtZero:true,
+
+ticks:{
+
+color:"#ffffff"
+
+},
+
+grid:{
+
+color:"#334155"
+
+}
+
+},
+
+x:{
+
+ticks:{
+
+color:"#ffffff"
+
+},
+
+grid:{
+
+display:false
+
+}
+
+}
+
+}
+
+}
+
+});
+
+}
+
+
+
+// Live Clock
+
+function updateClock(){
+
+const now=new Date();
+
+document.getElementById("clock").innerHTML=
+
+now.toLocaleTimeString();
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+
+
+// Greeting
+
+const hour=new Date().getHours();
+
+const greeting=document.getElementById("greeting");
+
+if(hour<12){
+
+greeting.innerHTML="☀️ Good Morning, {{ name }}";
+
+}
+
+else if(hour<18){
+
+greeting.innerHTML="🌤️ Good Afternoon, {{ name }}";
+
+}
+
+else{
+
+greeting.innerHTML="🌙 Good Evening, {{ name }}";
+
+}
+
+</script>
+
+</main>
+
+</div>
+
+</body>
+
+</html>

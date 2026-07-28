@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0B1120;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+.container{
+    width:100%;
+    max-width:700px;
+}
+
+.card{
+    background:#111827;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.card h1{
+    text-align:center;
+    margin-bottom:30px;
+    color:#3B82F6;
+}
+
+label{
+    display:block;
+    margin-top:18px;
+    margin-bottom:8px;
+    color:#CBD5E1;
+    font-weight:500;
+}
+
+input,
+textarea,
+select{
+
+    width:100%;
+    padding:14px;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    background:#1E293B;
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+textarea{
+    resize:none;
+    height:120px;
+}
+
+.buttons{
+
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+
+}
+
+.save-btn{
+
+    background:#2563EB;
+    color:white;
+    border:none;
+    padding:14px 24px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+
+}
+
+.save-btn:hover{
+
+    background:#1D4ED8;
+    transform:translateY(-2px);
+
+}
+
+.cancel-btn{
+
+    background:#475569;
+    color:white;
+    text-decoration:none;
+    padding:14px 24px;
+    border-radius:12px;
+    transition:.3s;
+
+}
+
+.cancel-btn:hover{
+
+    background:#334155;
+    transform:translateY(-2px);
+
+}
+
+@media(max-width:768px){
+
+.buttons{
+
+    flex-direction:column;
+    gap:15px;
+
+}
+
+.save-btn,
+.cancel-btn{
+
+    width:100%;
+    text-align:center;
+
+}
+
+}

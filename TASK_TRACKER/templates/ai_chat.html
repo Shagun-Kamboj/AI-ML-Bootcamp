@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Productivity Assistant</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/ai_chat.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+
+    <div class="header">
+
+        <div>
+
+            <h1>
+                🤖 AI Productivity Assistant
+            </h1>
+
+            <p>
+                Powered by Google Gemini AI
+            </p>
+
+        </div>
+
+        <a href="{{ url_for('ai_plan', id=task.id) }}" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back
+        </a>
+
+    </div>
+
+    <!-- Task Card -->
+
+    <div class="task-card">
+
+        <div class="task-item">
+
+            <span class="label">📋 Task</span>
+
+            <h2>{{ task.title }}</h2>
+
+        </div>
+
+        <div class="task-item">
+
+            <span class="label">🔥 Priority</span>
+
+            <span class="priority">
+                {{ task.priority }}
+            </span>
+
+        </div>
+
+        <div class="task-item">
+
+            <span class="label">📅 Deadline</span>
+
+            <h3>{{ task.deadline }}</h3>
+
+        </div>
+
+    </div>
+
+    <!-- Chat Window -->
+
+    <div class="chat-window">
+        <!-- AI Welcome Message -->
+
+<div class="message ai-message">
+
+    <div class="avatar">
+        🤖
+    </div>
+
+    <div class="bubble">
+
+        <h3>Hello {{ session.get('user_name','User') }} 👋</h3>
+
+        <p>
+            I'm your AI Productivity Coach.
+        </p>
+
+        <p>
+            I can help you with:
+        </p>
+
+        <ul class="feature-list">
+
+            <li>📅 Create a daily study schedule</li>
+
+            <li>🎯 Complete tasks before the deadline</li>
+
+            <li>📚 Recommend learning resources</li>
+
+            <li>⚡ Increase productivity</li>
+
+            <li>💡 Solve task-related doubts</li>
+
+        </ul>
+
+        <div class="suggestions">
+
+            <button
+                onclick="fillQuestion('How should I start this task?')">
+                🚀 How should I start?
+            </button>
+
+            <button
+                onclick="fillQuestion('Create a daily schedule')">
+                📅 Daily Schedule
+            </button>
+
+            <button
+                onclick="fillQuestion('Best learning resources')">
+                📚 Resources
+            </button>
+
+            <button
+                onclick="fillQuestion('How can I finish before the deadline?')">
+                ⏰ Finish Early
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- AI Answer -->
+
+{% if answer %}
+
+<div class="message ai-message">
+
+    <div class="avatar">
+        🤖
+    </div>
+
+    <div class="bubble answer">
+
+        <h3>Gemini AI</h3>
+
+        <div class="answer-text">
+
+            {{ answer|safe }}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+<!-- Chat Input -->
+
+<form method="POST" class="chat-form">
+
+    <div class="input-box">
+
+        <input
+            type="text"
+            id="question"
+            name="question"
+            placeholder="Ask anything about this task..."
+            required>
+
+        <button type="submit">
+
+            <i class="fa-solid fa-paper-plane"></i>
+
+            Send
+
+        </button>
+
+    </div>
+
+</form>
+
+</div>
+
+<!-- Bottom Action Buttons -->
+
+<div class="bottom-actions">
+
+    <button class="action-btn" onclick="copyAnswer()">
+        <i class="fa-solid fa-copy"></i>
+        Copy Answer
+    </button>
+
+    <button class="action-btn"
+        onclick="document.getElementById('question').focus()">
+
+        <i class="fa-solid fa-pen"></i>
+
+        Ask Another Question
+
+    </button>
+
+</div>
+
+</div>
+
+<script>
+
+function fillQuestion(text){
+
+    document.getElementById("question").value = text;
+
+    document.getElementById("question").focus();
+
+}
+
+function copyAnswer(){
+
+    let answer = document.querySelector(".answer-text");
+
+    if(answer){
+
+        navigator.clipboard.writeText(answer.innerText);
+
+        alert("Answer copied successfully!");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
