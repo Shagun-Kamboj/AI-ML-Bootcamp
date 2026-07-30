@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Quotes To Scrape</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/quotes_to_scrape.css') }}">
+
+</head>
+
+<body>
+
+<h1 class="title">
+💬 Quotes To Scrape
+</h1>
+
+<div class="container">
+
+{% for quote in quotes %}
+
+<div class="card">
+
+<p class="quote">
+{{ quote.text }}
+</p>
+
+<h3>
+{{ quote.author }}
+</h3>
+
+<p class="tags">
+{{ quote.tags }}
+</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+padding:20px 10%;
+background:#111827;
+}
+
+nav h2{
+color:#38bdf8;
+}
+
+nav ul{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+}
+
+nav a:hover{
+color:#38bdf8;
+}
+
+.container{
+padding:70px 10%;
+}
+
+.title{
+text-align:center;
+font-size:40px;
+color:#38bdf8;
+margin-bottom:50px;
+}
+
+.about{
+display:flex;
+gap:50px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.about img{
+width:300px;
+border-radius:20px;
+box-shadow:0 0 30px #38bdf8;
+}
+
+.about-text{
+flex:1;
+}
+
+.about-text h2{
+font-size:35px;
+margin-bottom:20px;
+}
+.contact a{
+color:#38bdf8;
+text-decoration:none;
+font-weight:600;
+}
+
+.contact a:hover{
+color:white;
+text-decoration:underline;
+}
+
+.about-text p{
+line-height:1.8;
+font-size:18px;
+}
+
+.skills{
+margin-top:80px;
+}
+
+.skill{
+margin:25px 0;
+}
+
+.progress{
+height:15px;
+background:#1e293b;
+border-radius:20px;
+overflow:hidden;
+}
+
+.progress span{
+display:block;
+height:100%;
+background:#38bdf8;
+}
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.project{
+background:#1e293b;
+padding:30px;
+border-radius:20px;
+transition:.4s;
+}
+
+.project:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px #38bdf8;
+}
+
+.contact{
+margin-top:80px;
+text-align:center;
+}
+
+.contact p{
+font-size:20px;
+margin:10px;
+}
+
+button{
+padding:15px 35px;
+background:#38bdf8;
+border:none;
+font-size:18px;
+font-weight:bold;
+border-radius:50px;
+cursor:pointer;
+margin-top:20px;
+}
+
+button:hover{
+background:white;
+}
+
+footer{
+margin-top:70px;
+background:#111827;
+padding:25px;
+text-align:center;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<h2>Portfolio</h2>
+
+<ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/portfolio">Portfolio</a></li>
+    <li><a href="#about">Learn More</a></li>
+    <li><a href="#contact">Contact Me</a></li>
+    <li><a href="/ai_journey">AI Journey</a></li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<h1 class="title">About Me</h1>
+
+<div class="about" id="about">
+
+    <img src="https://www.bing.com/th/id/OIP._4eGC9yo_inu1i-2zb0SzgHaHa?w=205&h=205&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2">
+
+    <div class="about-text">
+
+        <h2>Hi, I'm Shagun</h2>
+
+        <p>
+        I'm a Computer Science Engineering student passionate about Web Development,
+        Artificial Intelligence and Programming. I enjoy creating responsive
+        websites and solving real-world problems through technology.
+        </p>
+
+    </div>
+
+</div>
+<h1 class="title" id="education">Education</h1>
+
+<div class="projects">
+
+    <div class="project">
+        <h2>🎓 B.Tech Computer Science Engineering</h2>
+        <p><strong>College:</strong> Jai parkash Mukund Lal iinnovative Engineering and technology Institute </p>
+        <p><strong>Year:</strong> 2nd Year</p>
+        <p><strong>Duration:</strong> 2024 - 2028</p>
+        <p>Currently pursuing B.Tech in Computer Science Engineering with an interest in AI, Machine Learning, Web Development, and Data Analytics.</p>
+    </div>
+
+    <div class="project">
+        <h2>🏫 Senior Secondary (12th)</h2>
+        <p><strong>School:</strong> M.L.N SR. SEC SCHOOL,RADAUR</p>
+        <p><strong>Board:</strong> HBSE </p>
+        <p><strong>Year of Passing:</strong> 2024</p>
+    </div>
+
+    <div class="project">
+        <h2>🏫 Secondary (10th)</h2>
+        <p><strong>School:</strong> JANTA ADARSH SATYDEV SR SEC SCH YAMUNANAGAR</p>
+        <p><strong>Board:</strong>  CBSE</p>
+        <p><strong>Year of Passing:</strong> 2022</p>
+    </div>
+
+</div>
+<h1 class="title">Skills</h1>
+
+<div class="projects">
+
+<div class="project">
+<h2>💻 HTML</h2>
+<p>Advanced</p>
+</div>
+
+<div class="project">
+<h2>🎨 CSS</h2>
+<p>Advanced</p>
+</div>
+
+<div class="project">
+<h2>⚡ JavaScript</h2>
+<p>Intermediate</p>
+</div>
+
+<div class="project">
+<h2>🐍 Python</h2>
+<p>Advanced</p>
+</div>
+
+<div class="project">
+<h2>🌐 Flask</h2>
+<p>Intermediate</p>
+</div>
+
+<div class="project">
+<h2>📊 Power BI</h2>
+<p>Intermediate</p>
+</div>
+
+</div>
+
+</div>
+
+<h1 class="title">Projects</h1>
+
+<div class="projects">
+
+    <div class="project">
+        <h2>Portfolio Website</h2>
+        <p>Modern Responsive Portfolio using HTML & CSS.</p>
+    </div>
+
+    <div class="project">
+        <h2>AI Chatbot</h2>
+        <p>Python based Artificial Intelligence Chatbot.</p>
+    </div>
+
+    <div class="project">
+        <h2>Flask Website</h2>
+        <p>Responsive Flask Website with Login System.</p>
+    </div>
+
+</div>   <!-- Projects close here -->
+
+<div class="contact" id="contact">
+
+    <h1 class="title">Contact me</h1>
+
+    <p>📧 shagunkmboz2007@gmail.com</p>
+
+    <p>📱 +91 9053024598</p>
+
+    <p>📍 Haryana, India</p>
+    <p>
+        🐙 GitHub :
+        <a href="https://github.com/Shagun-Kamboj/AI-ML-Bootcamp"
+           target="_blank">
+            github.com/Shagun-Kamboj
+        </a>
+    </p>
+
+    <p>
+        💼 LinkedIn :
+        <a href="https://www.linkedin.com/in/shagun-kamboj-108009413"
+           target="_blank">
+            linkedin.com/in/shagun-kamboj-108009413
+        </a>
+    </p>
+
+
+    <button onclick="window.location.href='/'">
+    Back to Home →
+</button>
+
+</div>
+
+<footer>
+
+© 2026 Shagun Portfolio | All Rights Reserved
+
+</footer>
+
+</body>
+</html>
