@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Static Web Scraping</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<h1 class="title">🌐 Static Web Scraping</h1>
+
+<div class="cards">
+
+<div class="card">
+<h2>🎓 CollegeDunia</h2>
+<p>Scrape college details using BeautifulSoup.</p>
+
+<a href="/static_scraping/collegedunia" class="btn">View Details</a>
+ <a href="https://github.com/Shagun-Kamboj/AI-ML-Bootcamp/blob/main/Web_Scraping/web_scraping(3)(collegedunia).ipynb"
+       target="_blank"
+       class="btn">
+       View Notebook
+    </a>
+<a href="https://collegedunia.com" target="_blank" class="btn">Visit Website</a>
+
+</div>
+
+<div class="card">
+<h2>💻 Amazon Laptop</h2>
+<p>Scrape laptop name, price and ratings.</p>
+
+<a href="{{ url_for('static_scraping_amazon_laptops') }}" class="btn">View Details</a>
+<a href="https://github.com/Shagun-Kamboj/AI-ML-Bootcamp/blob/main/Web_Scraping/webscraping(5)(amazon_Laptops).ipynb"
+       target="_blank"
+       class="btn">
+       View Notebook
+    </a>
+<a href="https://www.amazon.in" target="_blank" class="btn">Visit Website</a>
+
+</div>
+
+<div class="card">
+<h2>🏑 Hockey Teams</h2>
+<p>Scrape hockey team names, countries and rankings.</p>
+
+ <a href="{{ url_for('hockey_team') }}" class="btn">
+        View Details
+    </a>
+<a href="https://github.com/Shagun-Kamboj/AI-ML-Bootcamp/blob/main/Web_Scraping/web_scraping(4)(Hockey_Teams).ipynb"
+       target="_blank"
+       class="btn">
+       View Notebook
+    </a>
+
+<a href="https://www.fih.hockey/" target="_blank" class="btn">
+    Visit Website
+</a>
+
+</div>
+
+<!-- Books To Scrape Card -->
+<div class="card">
+    <h2>📚 Books To Scrape</h2>
+
+    <p>Scrape book title, price and rating.</p>
+
+    <a href="{{ url_for('static_scraping_books_to_scrape') }}" class="btn">
+        View Details
+    </a>
+    <a href="https://github.com/Shagun-Kamboj/AI-ML-Bootcamp/blob/main/Web_Scraping/web_scraping(1)(intro%2Bbooks).ipynb"
+       target="_blank"
+       class="btn">
+       View Notebook
+    </a>
+    <a href="https://books.toscrape.com/" target="_blank" class="btn">
+        Visit Website
+    </a>
+</div>
+
+<!-- AmbitionBox Card -->
+<div class="card">
+
+<h2>💼 AmbitionBox</h2>
+
+<p>Scrape company reviews, ratings and salaries.</p>
+
+<a href="{{ url_for('static_scraping_ambitionbox') }}" class="btn">
+View Details
+</a>
+<a href="https://github.com/Shagun-Kamboj/AI-ML-Bootcamp/blob/main/Web_Scraping/web_scraping(11)(Ambitionbox).ipynb"
+       target="_blank"
+       class="btn">
+       View Notebook
+    </a>
+<a href="https://www.ambitionbox.com" target="_blank" class="btn">
+Visit Website
+</a>
+
+</div>
+
+</div>
+
+
+<div style="text-align:center; margin:40px;">
+<a href="/webscraping" class="btn">⬅ Back</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Random Duck API</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/random_duck.css') }}">
+
+</head>
+
+<body>
+
+<h1>🦆 Random Duck Gallery</h1>
+
+{% if error %}
+
+<div class="error">
+
+{{ error }}
+
+</div>
+
+{% endif %}
+
+<div class="container">
+
+{% for duck in ducks %}
+
+<div class="card">
+
+<img src="{{ duck.image }}" alt="Duck Image">
+
+<p>{{ duck.message }}</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+
+</html>
