@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Web Scraping</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+h1{
+text-align:center;
+padding:40px;
+color:#38bdf8;
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+gap:30px;
+
+padding:50px;
+
+}
+
+.card{
+
+background:#1e293b;
+
+padding:30px;
+
+border-radius:20px;
+
+text-align:center;
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 0 20px #38bdf8;
+
+}
+
+.btn{
+
+display:inline-block;
+
+margin-top:20px;
+
+padding:12px 30px;
+
+background:#38bdf8;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:30px;
+
+}
+
+.btn:hover{
+
+background:#0ea5e9;
+
+}
+.back-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:20px 0 40px;
+}
+
+.back-btn a{
+    display:inline-block;
+    padding:12px 30px;
+    background:#38bdf8;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    font-size:18px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.back-btn a:hover{
+    background:#0ea5e9;
+    transform:translateY(-3px);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>🌐 Web Scraping Projects</h1>
+
+<div class="cards">
+
+<div class="card">
+
+<h2>Static Web Scraping</h2>
+
+<p>Scraping HTML pages using Requests and BeautifulSoup.</p>
+
+<a href="/static_scraping" class="btn">Open</a>
+
+</div>
+
+<div class="card">
+
+<h2>Dynamic Web Scraping</h2>
+
+<p>Scraping JavaScript websites using Selenium.</p>
+
+<a href="/dynamic_scraping" class="btn">Open</a>
+
+</div>
+
+<div class="card">
+
+<h2>API Scraping</h2>
+
+<p>Fetching data from REST APIs using Python.</p>
+
+<a href="{{ url_for('api_scraping') }}" class="btn">Open</a>
+
+</div>
+
+</div>
+<div class="back-btn">
+    <a href="{{ url_for('home') }}">⬅ Back to Home</a>
+</div>
+</body>
+
+</html>
