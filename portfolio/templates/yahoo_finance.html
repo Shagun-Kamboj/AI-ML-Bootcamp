@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Yahoo Finance Scraper</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/yahoo_finance.css') }}">
+
+</head>
+
+<body>
+
+<h1 class="title">
+    📈 Yahoo Finance - Most Active Stocks
+</h1>
+
+<div class="container">
+
+<table>
+
+<thead>
+
+<tr>
+    <th>Symbol</th>
+    <th>Company</th>
+    <th>Price</th>
+    <th>Change</th>
+    <th>Volume</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for stock in stocks %}
+
+<tr>
+
+<td>{{ stock.symbol }}</td>
+
+<td>{{ stock.company }}</td>
+
+<td>{{ stock.price }}</td>
+
+<td>{{ stock.change }}</td>
+
+<td>{{ stock.volume }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>
